@@ -1,11 +1,11 @@
 #include "monty.h"
 /**
- * add - add
+ * multiplies - multiplies
  * @h: head
  * @c: counter
  * Return: no return
 */
-void add(stack_t **h, unsigned int c)
+void multiplies(stack_t **h, unsigned int c)
 {
 	stack_t *hd;
 	int len = 0, aux;
@@ -18,14 +18,14 @@ void add(stack_t **h, unsigned int c)
 	}
 	if (len < 2)
 	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", c);
+		fprintf(stderr, "L%d: can't mul, stack too short\n", c);
 		fclose(bus.file);
 		free(bus.content);
 		clear_stack(*h);
 		exit(EXIT_FAILURE);
 	}
 	hd = *h;
-	aux = hd->n + hd->next->n;
+	aux = hd->next->n * hd->n;
 	hd->next->n = aux;
 	*h = hd->next;
 	free(hd);
