@@ -1,52 +1,52 @@
 #include "monty.h"
 /**
-* run - runs the opcode
-* @s: stack
-* @c: counter
-* @f: file
-* @cnt: content
+* execute - executes the opcode
+* @stack: head linked list - stack
+* @counter: line_counter
+* @file: poiner to monty file
+* @content: line content
 * Return: no return
 */
-int run(char *cnt, stack_t **s, unsigned int c, FILE *f)
+int execute(char *content, stack_t **stack, unsigned int counter, FILE *file)
 {
-	instruction_t op[] = {
-				{"push", push}, {"pall", pall}, {"pint", print_int},
-				{"pop", print_pop},
-				{"swap", swap},
-				{"add", add},
-				{"nop", nothing},
-				{"sub", sustration},
-				{"div", divides},
-				{"mul", multiplies},
-				{"mod", modulo},
-				{"pchar", print_char},
-				{"pstr", print_string},
-				{"rotl", rotates_left},
-				{"rotr", rotates_right},
-				{"queue", queue},
-				{"stack", s},
+	instruction_t opst[] = {
+				{"push", f_push}, {"pall", f_pall}, {"pint", f_pint},
+				{"pop", f_pop},
+				{"swap", f_swap},
+				{"add", f_add},
+				{"nop", f_nop},
+				{"sub", f_sub},
+				{"div", f_div},
+				{"mul", f_mul},
+				{"mod", f_mod},
+				{"pchar", f_pchar},
+				{"pstr", f_pstr},
+				{"rotl", f_rotl},
+				{"rotr", f_rotr},
+				{"queue", f_queue},
+				{"stack", f_stack},
 				{NULL, NULL}
 				};
 	unsigned int i = 0;
-	char *o;
+	char *op;
 
-	o = strtok(cnt, " \n\t");
-	if (o && o[0] == '#')
+	op = strtok(content, " \n\t");
+	if (op && op[0] == '#')
 		return (0);
 	bus.arg = strtok(NULL, " \n\t");
-	while (op[i].opcode && o)
+	while (opst[i].opcode && op)
 	{
-		if (strcmp(o, op[i].opcode) == 0)
-		{	op[i].f(s, c);
+		if (strcmp(op, opst[i].opcode) == 0)
+		{	opst[i].f(stack, counter);
 			return (0);
 		}
 		i++;
 	}
-	if (o && op[i].opcode == NULL)
-	{ fprintf(stderr, "L%d: unknown instruction %s\n", c, o);
-		fclose(f);
-		free(cnt);
-		clear_stack(*s);
+	if (op && opst[i].opcode == NULL)
+	{ fprintf(stderr, "L%d: unknown instruction %s\n", counter, op);
+		fclose(file);
+		free(content);
+		free_stack(*stack);
 		exit(EXIT_FAILURE); }
 	return (1);
 }

@@ -1,25 +1,25 @@
 #include "monty.h"
 /**
- * add_node_to_stack - add node to stack
- * @h: head
+ * addnode - add node to the head stack
+ * @head: head of the stack
  * @n: new_value
  * Return: no return
 */
-void add_node_to_stack(stack_t **h, int n)
+void addnode(stack_t **head, int n)
 {
 
-	stack_t *n_n, *a;
+	stack_t *new_node, *aux;
 
-	a = *h;
-	n_n = malloc(sizeof(stack_t));
-	if (n_n == NULL)
+	aux = *head;
+	new_node = malloc(sizeof(stack_t));
+	if (new_node == NULL)
 	{ printf("Error\n");
 		exit(0); }
-	if (a)
-		a->prev = n_n;
-	n_n->n = n;
-	n_n->next = *h;
-	n_n->prev = NULL;
-	*h = n_n;
+	if (aux)
+		aux->prev = new_node;
+	new_node->n = n;
+	new_node->next = *head;
+	new_node->prev = NULL;
+	*head = new_node;
 }
 

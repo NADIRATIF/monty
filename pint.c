@@ -1,20 +1,20 @@
 #include "monty.h"
 /**
- * function_to_print_intiger - function to print intiger
- * @h: head
- * @c: counter
+ * f_pint - prints the top
+ * @head: stack head
+ * @counter: line_number
  * Return: no return
 */
-void function_to_print_intiger(stack_t **h, unsigned int c)
+void f_pint(stack_t **head, unsigned int counter)
 {
-	if (*h == NULL)
+	if (*head == NULL)
 	{
-		fprintf(stderr, "L%u: can't pint, stack empty\n", c);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", counter);
 		fclose(bus.file);
 		free(bus.content);
-		function_to_clear_stack(*h);
+		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", (*h)->n);
+	printf("%d\n", (*head)->n);
 }
 

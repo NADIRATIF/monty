@@ -1,22 +1,22 @@
 #include "monty.h"
 /**
- * pall - prints the stack
- * @h: head
- * @counter: counter
+ * f_pall - prints the stack
+ * @head: stack head
+ * @counter: no used
  * Return: no return
 */
-void pall(stack_t **h, unsigned int counter)
+void f_pall(stack_t **head, unsigned int counter)
 {
-	stack_t *hd;
+	stack_t *h;
 	(void)counter;
 
-	hd = *h;
-	if (hd == NULL)
+	h = *head;
+	if (h == NULL)
 		return;
-	while (hd)
+	while (h)
 	{
-		printf("%d\n", hd->n);
-		hd = hd->next;
+		printf("%d\n", h->n);
+		h = h->next;
 	}
 }
 

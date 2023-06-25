@@ -1,18 +1,18 @@
 #include "monty.h"
 /**
-* function_to_clear_stack - clear doubly link list
-* @h: head
+* free_stack - frees a doubly linked list
+* @head: head of the stack
 */
-void function_to_clear_stack(stack_t *h)
+void free_stack(stack_t *head)
 {
-	stack_t *a;
+	stack_t *aux;
 
-	a = h;
-	while (h)
+	aux = head;
+	while (head)
 	{
-		a = h->next;
-		free(h);
-		h = a;
+		aux = head->next;
+		free(head);
+		head = aux;
 	}
 }
 
