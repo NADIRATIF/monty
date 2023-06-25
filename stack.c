@@ -1,14 +1,14 @@
 #include "monty.h"
 /**
- * f_stack - prints the top
- * @head: stack head
- * @counter: line_number
+ * function_to_print_stack_top - prints stack
+ * @h: head
+ * @c: counter
  * Return: no return
 */
-void f_stack(stack_t **head, unsigned int counter)
+void function_to_print_stack_top(stack_t **h, unsigned int c)
 {
-	(void)head;
-	(void)counter;
+	(void)h;
+	(void)c;
 	bus.lifi = 0;
 }
 
